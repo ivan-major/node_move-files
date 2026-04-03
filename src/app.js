@@ -19,7 +19,7 @@ const moveFile = (source, destination) => {
   } else if (destination.endsWith(path.sep) || destination.endsWith('/')) {
     const dirPath = destination.replace(/[/\\]+$/, '');
 
-    if (!fs.existsSync(dirPath)) {
+    if (!fs.existsSync(dirPath) || !fs.statSync(dirPath).isDirectory()) {
       throw new Error(`Destination directory does not exist: "${dirPath}"`);
     }
 
