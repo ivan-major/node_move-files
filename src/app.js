@@ -6,7 +6,7 @@ const moveFile = (source, destination) => {
     throw new Error('Source and destination paths are required.');
   }
 
-  if (!fs.existsSync(source)) {
+  if (!fs.existsSync(source) || !fs.statSync(source).isDirectory()) {
     throw new Error(`Source file "${source}" does not exist.`);
   }
 
